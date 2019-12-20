@@ -3,8 +3,7 @@
 """
 PyRamen Homework
 This script processes an input file located in one level down of running directory "../Resources/budget_data.csv".
-After processing the data, prints the results on screen.
-Also generated the file "../Financial_Analysis_PyBank.txt" located in the same directoy as input file. 
+After processing the data, prints the results on a text file "./Resources/report.txt". 
 """
 
 # @TODO: Import libraries
@@ -83,7 +82,13 @@ for sale in sales:
     else:
         print (f"************Item {Menu_Item} not in Menu. NO MATCH!!!***************")
     row_count += 1
-print (report)
+
+file_path_resutl = Path('Resources/report.txt') # Output File is in one level up directory
+
+# @TODO: Write out report to a text file (won't appear on the command line output)
+with open(file_path_resutl, 'w') as my_file:
+    my_file.write(str(report))
+    
 # @TODO: Print total number of records in sales data
 print ("------------------------------------------------------------")
 print (f"Total number of records in sales data file: {row_count}")
